@@ -1,0 +1,36 @@
+.fab-frame {
+  display: inline-block;
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  width: 40px;
+  height: 40px;
+}
+.fab-frame:hover a:nth-child(2) {
+  bottom: 50px;
+}
+.fab-frame:hover {
+  height: 140px;
+}
+.fab-frame:hover a:nth-child(3) {
+  bottom: 100px;
+}
+.fab-frame:hover {
+  height: 140px;
+}
+.fab-frame a {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 0;
+  transition: bottom 1s;
+}
+.fab-frame a:nth-child(1) {
+  z-index: -1;
+}
+.fab-frame a:nth-child(2) {
+  z-index: -2;
+}
+.fab-frame a:nth-child(3) {
+  z-index: -3;
+}

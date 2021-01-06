@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>truanz</title>
+  <link rel="shortcut icon" href="/blog/favicon.ico">
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+
+  <!-- element-ui -->
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/element-ui/lib/index.js"></script>
+
+  <!-- Custom CSS -->
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    
+<link rel="stylesheet" href="/blog/css/index.css">
+
+<a href="https://www.truanz.com"><i class="fa fa-camera-retro fa-lg"></i></a>
+<div class="index">
+  <div class="article-archive">
+  
+    <div class="article-item">
+      <a href="/blog/2020/11/27/PG%E5%BA%93%E5%88%86%E8%A1%A8/" class="title">
+        PG库分表
+      </a>
+      <p>记录一下PG库分表实践</p>
+    </div>
+    <hr>
+  
+    <div class="article-item">
+      <a href="/blog/2020/10/20/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="title">
+        hexo搭建个人博客
+      </a>
+      <p>闲来无事，体验一下hexo，在此记录</p>
+    </div>
+    <hr>
+  
+    <div class="article-item">
+      <a href="/blog/2020/10/15/docker-mysql-remark/" class="title">
+        docker mysql
+      </a>
+      <p>docker安装MySQL备忘录</p>
+    </div>
+    <hr>
+  
+</div>
+
+</div>
+
+  
+<link rel="stylesheet" href="/blog/css/search.css">
+
+  <div id="search">
+    <a class="local_search_btn" @click="dialogVisible = true">
+      <i class="fa fa-search fa-lg"></i>
+    </a>
+
+        <el-dialog
+                custom-class="custom-dialog"
+                :visible.sync="dialogVisible"
+                :show-close="false"
+                :lock-scroll="false"
+                @opened="searchDialogOpend"
+                width="30%">
+            <span slot="title">
+                <el-input id="local-search-input" v-model="local_search_input" placeholder="search..."></el-input>
+            </span>
+           <div id="local-search-result"></div>
+        </el-dialog>
+  </div>
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  
+<script src="/blog/js/search.js"></script>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#search',
+      data: function() {
+        return {
+          dialogVisible: false,
+          local_search_input: ''
+        }
+      },
+      methods: {
+        searchDialogOpend() {
+          document.getElementById('local-search-input').focus()
+        }
+      }
+    })
+    var search_path = "search.xml";
+  	if (search_path.length == 0) {
+	 	  search_path = "search.xml";
+	  }
+	  var path = "/blog/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+  </script>
+
+
+<div class="music-drawer" id="music-drawer" v-bind:class="{ 'music-drawer-active': isActive }">
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=5434917009&auto=1&height=90"></iframe>
+  <a class="local_search_btn" @click="isActive = !isActive">
+    <i class="fa fa-music fa-lg"></i>
+  </a>
+</div>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#music-drawer',
+    data: function() {
+      return {
+        isActive: false
+      }
+    }
+  })
+</script>
+
+
+    
+<link rel="stylesheet" href="/blog/css/fab.css">
+
+<div class="fab-frame" id="fab">
+  <a href="https://www.truanz.com/blog"><el-button type="info" icon="el-icon-more" circle></el-button></a>
+
+  <a href="/blog/categories"><el-button type="primary" icon="el-icon-collection" circle></el-button></a>
+  <a href="/blog/tags"><el-button type="success" icon="el-icon-collection-tag" circle></el-button></a>
+</div>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#fab',
+    data: function() {
+      return {
+        isActive: false
+      }
+    }
+  })
+</script>
+
+  </body>
+</html>

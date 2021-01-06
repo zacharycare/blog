@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>truanz</title>
+  <link rel="shortcut icon" href="/blog/favicon.ico">
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+
+  <!-- element-ui -->
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/element-ui/lib/index.js"></script>
+
+  <!-- Custom CSS -->
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    
+<link rel="stylesheet" href="/blog/css/detail.css">
+
+<div class="main">
+  <article class="article">
+    <div class="title">
+      PG库分表
+    </div>
+    <div class="content">
+      <p>记录一下PG库分表实践</p>
+<a id="more"></a>
+
+<p>先上文档 <a target="_blank" rel="noopener" href="http://www.postgres.cn/docs/10/ddl-partitioning.html">http://www.postgres.cn/docs/10/ddl-partitioning.html</a></p>
+<p>简单贴一下PG分区表的概念特点</p>
+<p>pg本身的分区表功能，支持基本的表划分，划分值将逻辑上的一个大表分成一些小的物理上的片，优势如下：</p>
+<ul>
+<li>在某些情况下查询性能能够显著提升，特别是当那些访问压力大的行在一个分区或者少数几个分区时。划分可以取代索引的主导列、减小索引尺寸以及使索引中访问压力大的部分更有可能被放在内存中。</li>
+<li>当查询或更新访问一个分区的大部分行时，可以通过该分区上的一个顺序扫描来取代分散到整个表上的索引和随机访问，这样可以改善性能。</li>
+<li>如果需求计划使用划分设计，可以通过增加或移除分区来完成批量载入和删除。 执行<code>ALTER TABLE DETACH PARTITION</code>或者使用<code>DROP TABLE</code> 删除一个单独的分区都远快于一个批量操作。这些命令也完全避免了由批量<code>DELETE</code>造成的<code>VACUUM</code>负载。</li>
+<li>很少使用的数据可以被迁移到便宜且较慢的存储介质上。</li>
+</ul>
+<p>当一个表非常大时，划分所带来的好处是非常值得的。一个表何种情况下会从划分获益取决于应用，一个经验法则是当表的尺寸超过了数据库服务器物理内存时，划分会为表带来好处。</p>
+<p>PG支持两种分区方式：</p>
+<ol>
+<li><p>声明式</p>
+</li>
+<li><p>继承式</p>
+</li>
+</ol>
+<hr>
+<p>本次记录一下继承方式的分区方法。</p>
+<p>继承的特点：</p>
+<ul>
+<li>分区强制执行一条规则，即所有分区必须与父表具有完全相同的一组列， 但表继承允许子表具有不在父表中的额外列。</li>
+<li>表继承允许多重继承。</li>
+<li>声明式分区仅支持列表和范围分区，而表继承允许按照用户选择的方式分割数据。 （但是，请注意，如果约束排除无法有效地修剪分区，查询性能将会很差。）</li>
+<li>有些操作在使用声明式分区时需要比使用表继承时更强的锁定。例如， 向分区表添加或删除分区需要在父表上使用<code>ACCESS EXCLUSIVE</code>锁， 而在普通继承的情况下<code>SHARE UPDATE EXCLUSIVE</code>锁就足够了。</li>
+</ul>
+<p>实践开始</p>
+<h5 id="创建主表"><a href="#创建主表" class="headerlink" title="创建主表"></a>创建主表</h5><p>所有的分区都将继承主表。 这个表将不会包含任何数据。不要在这个表上定义任何检查约束， 除非准备将它们应用到所有分区。同样也不需要定义任何索引或者唯一约束。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE student (</span><br><span class="line">&quot;id&quot; VARCHAR(10) not null,</span><br><span class="line">&quot;name&quot; VARCHAR(20) not null,</span><br><span class="line">&quot;age&quot; int4,</span><br><span class="line">&quot;class&quot; VARCHAR(10)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h5 id="创建分区表"><a href="#创建分区表" class="headerlink" title="创建分区表"></a>创建分区表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE student_1 (CHECK (&quot;class&quot; &#x3D; &#39;1&#39;)) INHERITS (student);</span><br><span class="line">CREATE TABLE student_2 (CHECK (&quot;class&quot; &#x3D; &#39;2&#39;)) INHERITS (student);</span><br></pre></td></tr></table></figure>
+<p>注：确保每个分区表的CHECK约束没有重叠，比如<code>class in (&#39;1&#39;,&#39;2&#39;)</code>和<code>class in (&#39;2&#39;,&#39;3&#39;)</code></p>
+<h5 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX index_student_1_class ON student_1 (&quot;class&quot;);</span><br><span class="line">CREATE INDEX index_student_2_class ON student_2 (&quot;class&quot;);</span><br></pre></td></tr></table></figure>
+<h5 id="创建触发器"><a href="#创建触发器" class="headerlink" title="创建触发器"></a>创建触发器</h5><p>为主表附加一个合适的触发器，能够在insert into student…时将数据重定向到对应的分区表。</p>
+<p>先创建一个函数，每一个IF必须匹配对应分区表的CHECK约束</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE FUNCTION student_insert_trigger()</span><br><span class="line">RETURNS TRIGGER AS $$</span><br><span class="line">BEGIN</span><br><span class="line">		IF (NEW.&quot;class&quot; &#x3D; &#39;1&#39;) THEN</span><br><span class="line">			INSERT INTO student_1 VALUES (NEW.*);</span><br><span class="line">		ELSEIF (NEW.&quot;class&quot; &#x3D; &#39;2&#39;) THEN</span><br><span class="line">			INSERT INTO student_2 VALUES (NEW.*);</span><br><span class="line">		ELSE</span><br><span class="line">			RAISE EXCEPTION &#39;class out of range&#39;;</span><br><span class="line">		END IF;</span><br><span class="line">    RETURN NULL;</span><br><span class="line">END;</span><br><span class="line">$$</span><br><span class="line">LANGUAGE plpgsql;</span><br></pre></td></tr></table></figure>
+<p>然后创建一个调用该函数的触发器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TRIGGER insert_student_trigger</span><br><span class="line">    BEFORE INSERT ON student</span><br><span class="line">    FOR EACH ROW EXECUTE PROCEDURE student_insert_trigger();</span><br></pre></td></tr></table></figure>
+<h5 id="维护"><a href="#维护" class="headerlink" title="维护"></a>维护</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE student ADD &quot;remark&quot; VARCHAR(255);</span><br></pre></td></tr></table></figure>
+<p>例如增加字段，只需要修改主表即可。</p>
+<p>至此继承方式的分区表创建基本就OK了，可以自行验证一下</p>
+<p>注：主表中是没有数据的<code>SELECT * from only student;</code>，如果insert数据的class字段的值不是1或2，则会抛出触发器函数中的异常<code>class out of range</code></p>
+
+    </div>
+  </article>
+  <hr>
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/PG/" rel="tag">PG</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%88%86%E8%A1%A8/" rel="tag">分表</a><span class="tag-list-count">1</span></li></ul>
+  <hr>
+  <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">2</span></li></ul>
+  <hr>
+  <!-- Comments -->
+  
+    <div class="post-comments">
+        <div id="gitalk-container"></div>
+
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+<script src="/blog/js/md5.min.js"></script>
+
+<script type="text/javascript">
+ var gitalk = new Gitalk({
+  clientID: '21b4348bf8ba57233fd0',
+  clientSecret: '3ed22c945c20993ecdddfff539f2c8f257009eeb',
+  repo: 'blog',
+  owner: 'zacharycare',
+  admin: ['zacharycare'],
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+
+gitalk.render('gitalk-container')
+</script>
+
+    </div>
+  
+</div>
+
+
+    
+<link rel="stylesheet" href="/blog/css/fab.css">
+
+<div class="fab-frame" id="fab">
+  <a href="https://www.truanz.com/blog"><el-button type="info" icon="el-icon-more" circle></el-button></a>
+
+  <a href="/blog/categories"><el-button type="primary" icon="el-icon-collection" circle></el-button></a>
+  <a href="/blog/tags"><el-button type="success" icon="el-icon-collection-tag" circle></el-button></a>
+</div>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#fab',
+    data: function() {
+      return {
+        isActive: false
+      }
+    }
+  })
+</script>
+
+  </body>
+</html>

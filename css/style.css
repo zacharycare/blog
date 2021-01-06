@@ -1,0 +1,33 @@
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+}
+body {
+  font-family: serif, sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #525252;
+}
+a:hover,
+a:focus {
+  color: #409eff;
+}
+.music-drawer,
+.music-drawer-active {
+  position: fixed;
+  bottom: 10px;
+  width: 360px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.music-drawer {
+  left: -330px;
+  transition: left 1s;
+}
+.music-drawer-active {
+  left: 8px;
+}
