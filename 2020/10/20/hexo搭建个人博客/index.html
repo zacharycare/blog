@@ -30,6 +30,7 @@
     
 <link rel="stylesheet" href="/blog/css/detail.css">
 
+<a id="paper-plane" href="https://www.truanz.com/blog"><i class="fa fa-paper-plane fa-lg"></i></a>
 <div class="main">
   <article class="article">
     <div class="title">
@@ -68,11 +69,11 @@
     </div>
   </article>
   <hr>
-  <a class="ttttest-link" href="/blog/tags/hexo/" rel="tag">#HEXO</a>
+  <a class="article-tag-item-link" href="/blog/tags/hexo/" rel="tag">#HEXO</a>
   <hr>
   <!-- prev next -->
   
-  <nav id="article-nav">
+  <nav id="article-nav" class="article-pn-nav">
     
       <a href="/blog/2020/11/27/PG%E5%BA%93%E5%88%86%E8%A1%A8/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">Newer</strong>
@@ -92,6 +93,7 @@
   </nav>
   
   <hr>
+
   <!-- Comments -->
   
 </div>
@@ -101,20 +103,16 @@
 <link rel="stylesheet" href="/blog/css/fab.css">
 
 <div class="fab-frame" id="fab">
-  <a href="https://www.truanz.com/blog"><el-button type="info" icon="el-icon-more" circle></el-button></a>
+  <a href="javascript:void(0);"><el-button type="info" icon="el-icon-more" circle></el-button></a>
 
   <a href="/blog/categories"><el-button type="primary" icon="el-icon-collection" circle></el-button></a>
   <a href="/blog/tags"><el-button type="success" icon="el-icon-collection-tag" circle></el-button></a>
+  <a href="/blog/archives"><el-button type="warning" icon="el-icon-takeaway-box" circle></el-button></a>
 </div>
 
 <script type="text/javascript">
   new Vue({
-    el: '#fab',
-    data: function() {
-      return {
-        isActive: false
-      }
-    }
+    el: '#fab'
   })
 </script>
 

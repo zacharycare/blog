@@ -113,43 +113,22 @@
   </script>
 
 
-<div class="music-drawer" id="music-drawer" v-bind:class="{ 'music-drawer-active': isActive }">
-  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=5434917009&auto=1&height=90"></iframe>
-  <a class="local_search_btn" @click="isActive = !isActive">
-    <i class="fa fa-music fa-lg"></i>
-  </a>
-</div>
-
-<script type="text/javascript">
-  new Vue({
-    el: '#music-drawer',
-    data: function() {
-      return {
-        isActive: false
-      }
-    }
-  })
-</script>
 
 
     
 <link rel="stylesheet" href="/blog/css/fab.css">
 
 <div class="fab-frame" id="fab">
-  <a href="https://www.truanz.com/blog"><el-button type="info" icon="el-icon-more" circle></el-button></a>
+  <a href="javascript:void(0);"><el-button type="info" icon="el-icon-more" circle></el-button></a>
 
   <a href="/blog/categories"><el-button type="primary" icon="el-icon-collection" circle></el-button></a>
   <a href="/blog/tags"><el-button type="success" icon="el-icon-collection-tag" circle></el-button></a>
+  <a href="/blog/archives"><el-button type="warning" icon="el-icon-takeaway-box" circle></el-button></a>
 </div>
 
 <script type="text/javascript">
   new Vue({
-    el: '#fab',
-    data: function() {
-      return {
-        isActive: false
-      }
-    }
+    el: '#fab'
   })
 </script>
 

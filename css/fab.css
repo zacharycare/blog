@@ -10,13 +10,19 @@
   bottom: 50px;
 }
 .fab-frame:hover {
-  height: 140px;
+  height: 190px;
 }
 .fab-frame:hover a:nth-child(3) {
   bottom: 100px;
 }
 .fab-frame:hover {
-  height: 140px;
+  height: 190px;
+}
+.fab-frame:hover a:nth-child(4) {
+  bottom: 150px;
+}
+.fab-frame:hover {
+  height: 190px;
 }
 .fab-frame a {
   position: absolute;
@@ -33,4 +39,7 @@
 }
 .fab-frame a:nth-child(3) {
   z-index: -3;
+}
+.fab-frame a:nth-child(4) {
+  z-index: -4;
 }

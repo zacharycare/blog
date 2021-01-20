@@ -30,6 +30,7 @@
     
 <link rel="stylesheet" href="/blog/css/detail.css">
 
+<a id="paper-plane" href="https://www.truanz.com/blog"><i class="fa fa-paper-plane fa-lg"></i></a>
 <div class="main">
   <article class="article">
     <div class="title">
@@ -41,17 +42,15 @@
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># docker exec -it 容器id bash</span><br><span class="line"># date</span><br><span class="line"># ln -sf &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Shanghai &#x2F;etc&#x2F;localtime</span><br><span class="line">退出重启docker</span><br><span class="line"># exit</span><br><span class="line"># docker restart 容器id</span><br></pre></td></tr></table></figure>
 <hr>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=29544534&auto=1&height=66"></iframe>
-
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=5434917009&auto=1&height=90"></iframe>
+<img src="https://cdn.jsdelivr.net/gh/zacharycare/imgBed@main/微信图片_20200819144722.png" style="width:100%" />
     </div>
   </article>
   <hr>
-  <a class="ttttest-link" href="/blog/tags/docker-mysql/" rel="tag">#DOCKER MYSQL</a>
+  <a class="article-tag-item-link" href="/blog/tags/docker-mysql/" rel="tag">#DOCKER MYSQL</a>
   <hr>
   <!-- prev next -->
   
-  <nav id="article-nav">
+  <nav id="article-nav" class="article-pn-nav">
     
       <a href="/blog/2020/10/20/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">Newer</strong>
@@ -66,6 +65,7 @@
   </nav>
   
   <hr>
+
   <!-- Comments -->
   
     <div class="post-comments">
@@ -103,20 +103,16 @@ gitalk.render('gitalk-container')
 <link rel="stylesheet" href="/blog/css/fab.css">
 
 <div class="fab-frame" id="fab">
-  <a href="https://www.truanz.com/blog"><el-button type="info" icon="el-icon-more" circle></el-button></a>
+  <a href="javascript:void(0);"><el-button type="info" icon="el-icon-more" circle></el-button></a>
 
   <a href="/blog/categories"><el-button type="primary" icon="el-icon-collection" circle></el-button></a>
   <a href="/blog/tags"><el-button type="success" icon="el-icon-collection-tag" circle></el-button></a>
+  <a href="/blog/archives"><el-button type="warning" icon="el-icon-takeaway-box" circle></el-button></a>
 </div>
 
 <script type="text/javascript">
   new Vue({
-    el: '#fab',
-    data: function() {
-      return {
-        isActive: false
-      }
-    }
+    el: '#fab'
   })
 </script>
 

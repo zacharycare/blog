@@ -30,6 +30,7 @@
     
 <link rel="stylesheet" href="/blog/css/detail.css">
 
+<a id="paper-plane" href="https://www.truanz.com/blog"><i class="fa fa-paper-plane fa-lg"></i></a>
 <div class="main">
   <article class="article">
     <div class="title">
@@ -84,11 +85,11 @@
     </div>
   </article>
   <hr>
-  <a class="ttttest-link" href="/blog/tags/PG/" rel="tag">#PG</a> | <a class="ttttest-link" href="/blog/tags/%E5%88%86%E8%A1%A8/" rel="tag">#分表</a>
+  <a class="article-tag-item-link" href="/blog/tags/PG/" rel="tag">#PG</a> | <a class="article-tag-item-link" href="/blog/tags/%E5%88%86%E8%A1%A8/" rel="tag">#分表</a>
   <hr>
   <!-- prev next -->
   
-  <nav id="article-nav">
+  <nav id="article-nav" class="article-pn-nav">
     
     
       <a href="/blog/2020/10/20/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
@@ -99,6 +100,7 @@
   </nav>
   
   <hr>
+
   <!-- Comments -->
   
     <div class="post-comments">
@@ -136,20 +138,16 @@ gitalk.render('gitalk-container')
 <link rel="stylesheet" href="/blog/css/fab.css">
 
 <div class="fab-frame" id="fab">
-  <a href="https://www.truanz.com/blog"><el-button type="info" icon="el-icon-more" circle></el-button></a>
+  <a href="javascript:void(0);"><el-button type="info" icon="el-icon-more" circle></el-button></a>
 
   <a href="/blog/categories"><el-button type="primary" icon="el-icon-collection" circle></el-button></a>
   <a href="/blog/tags"><el-button type="success" icon="el-icon-collection-tag" circle></el-button></a>
+  <a href="/blog/archives"><el-button type="warning" icon="el-icon-takeaway-box" circle></el-button></a>
 </div>
 
 <script type="text/javascript">
   new Vue({
-    el: '#fab',
-    data: function() {
-      return {
-        isActive: false
-      }
-    }
+    el: '#fab'
   })
 </script>
 

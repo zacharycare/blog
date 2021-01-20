@@ -1,3 +1,8 @@
+#paper-plane {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
 .main {
   width: 1000px;
   margin: 30px auto 0;
@@ -30,4 +35,8 @@
 }
 .main .article .content figure.highlight .code {
   padding-left: 10px;
+}
+.main .article-pn-nav {
+  display: flex;
+  justify-content: space-between;
 }

@@ -46,20 +46,16 @@
 <link rel="stylesheet" href="/blog/css/fab.css">
 
 <div class="fab-frame" id="fab">
-  <a href="https://www.truanz.com/blog"><el-button type="info" icon="el-icon-more" circle></el-button></a>
+  <a href="javascript:void(0);"><el-button type="info" icon="el-icon-more" circle></el-button></a>
 
   <a href="/blog/categories"><el-button type="primary" icon="el-icon-collection" circle></el-button></a>
   <a href="/blog/tags"><el-button type="success" icon="el-icon-collection-tag" circle></el-button></a>
+  <a href="/blog/archives"><el-button type="warning" icon="el-icon-takeaway-box" circle></el-button></a>
 </div>
 
 <script type="text/javascript">
   new Vue({
-    el: '#fab',
-    data: function() {
-      return {
-        isActive: false
-      }
-    }
+    el: '#fab'
   })
 </script>
 
