@@ -90,18 +90,6 @@
     opacity: 1;
   }
 }
-.index {
-  margin-top: 30px;
-}
-.article-archive {
-  width: 1000px;
-  margin: 0 auto;
-}
-@media screen and (max-width: 768px) {
-  .article-archive {
-    width: 100%;
-  }
-}
-.article-archive .article-item .title {
+.article-index .article-item .title {
   font-size: 20px;
 }
