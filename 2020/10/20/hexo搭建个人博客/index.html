@@ -32,7 +32,8 @@
 
 <a id="paper-plane" href="/blog/"><i class="fa fa-paper-plane fa-lg"></i></a>
 <div class="main center-area">
-  <article class="article">
+  
+  <article id="article" class="article">
     <div class="title">
       hexo搭建个人博客
     </div>
@@ -93,6 +94,22 @@
   </nav>
   
   <hr>
+
+  <script type="text/javascript">
+    var objs = document.getElementById("article").getElementsByTagName("img");
+    var modal = document.getElementById("modal");
+    for(var i=0;i<objs.length;i++)
+    {
+      objs[i].onclick=function()
+      {
+        window.open(this.src);
+
+        // modal.style.display = 'block';
+        // modal.innerHTML = '<img src="' + this.src + '">';
+      }
+      objs[i].style.cursor = "pointer";
+    }
+  </script>
 
   <!-- Comments -->
   
