@@ -8,7 +8,7 @@
       <link href="/blog/2021/04/13/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%B0%8F%E8%AE%B0/"/>
       <url>/blog/2021/04/13/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%B0%8F%E8%AE%B0/</url>
       
-        <content type="html"><![CDATA[<p>manjaro系统开发环境搭建小记，备忘。。。</p><span id="more"></span><p>最近又转到manjaro系统，鉴于之前玩过一段时间，基本能满足个人需求并且日常使用没有什么大问题，所以直接物理机安装，win10也不要了:smirk:</p><p>manjaro安装教程网上很多了，在此备注几个点</p><ol><li>windows环境下使用rufus以DD模式制作启动盘，现在一般都是GPT模式，可以在磁盘管理中查到</li><li>有N卡独显，选择闭源</li><li>分区按照一般linux系统分区就行，引导分区，根分区，交换分区，还有其他分区，按需配置</li></ol><p>然后就可以开始折腾了</p>]]></content>
+        <content type="html"><![CDATA[<p>manjaro系统开发环境搭建小记，备忘。。。</p><span id="more"></span><p>最近又转到manjaro系统，鉴于之前玩过一段时间，基本能满足个人需求并且日常使用没有什么大问题，所以直接物理机安装，win10也不要了😏</p><p>manjaro安装教程网上很多了，在此备注几个点</p><ol><li>windows环境下使用rufus以DD模式制作启动盘，现在一般都是GPT模式，可以在磁盘管理中查到</li><li>有N卡独显，选择闭源</li><li>分区按照一般linux系统分区就行，引导分区，根分区，交换分区，还有其他分区，按需配置</li></ol><p>然后就可以开始折腾了</p>]]></content>
       
       
       
