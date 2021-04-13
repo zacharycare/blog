@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>truanz</title>
+  <link rel="shortcut icon" href="/blog/favicon.ico">
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+
+  <!-- element-ui -->
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/element-ui/lib/index.js"></script>
+
+  <!-- Custom CSS -->
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    
+<link rel="stylesheet" href="/blog/css/detail.css">
+
+<a id="paper-plane" href="/blog/"><i class="fa fa-paper-plane fa-lg"></i></a>
+<div class="main center-area">
+  
+  <article id="article" class="article">
+    <div class="title">
+      docker mysql
+    </div>
+    <div class="content">
+      <p>docker安装MySQL备忘录</p>
+<span id="more"></span>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># docker exec -it 容器id bash</span><br><span class="line"># date</span><br><span class="line"># ln -sf &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Shanghai &#x2F;etc&#x2F;localtime</span><br><span class="line">退出重启docker</span><br><span class="line"># exit</span><br><span class="line"># docker restart 容器id</span><br></pre></td></tr></table></figure>
+
+<hr>
+<img src="https://cdn.jsdelivr.net/gh/zacharycare/imgBed@main/微信图片_20200819144722.png" style="width:100%" />
+    </div>
+  </article>
+  <hr>
+  <a class="article-tag-item-link" href="/blog/tags/docker-mysql/" rel="tag">#DOCKER MYSQL</a>
+  <hr>
+  <!-- prev next -->
+  
+  <nav id="article-nav" class="article-pn-nav">
+    
+      <a href="/blog/2020/10/20/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">Newer</strong>
+        <div class="article-nav-title">
+          
+            hexo搭建个人博客
+          
+        </div>
+      </a>
+    
+    
+  </nav>
+  
+  <hr>
+
+  <script type="text/javascript">
+    var objs = document.getElementById("article").getElementsByTagName("img");
+    var modal = document.getElementById("modal");
+    for(var i=0;i<objs.length;i++)
+    {
+      objs[i].onclick=function()
+      {
+        window.open(this.src);
+
+        // modal.style.display = 'block';
+        // modal.innerHTML = '<img src="' + this.src + '">';
+      }
+      objs[i].style.cursor = "pointer";
+    }
+  </script>
+
+  <!-- Comments -->
+  
+    <div class="post-comments">
+        <div id="gitalk-container"></div>
+
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+<script src="/blog/js/md5.min.js"></script>
+
+<script type="text/javascript">
+ var gitalk = new Gitalk({
+  clientID: '21b4348bf8ba57233fd0',
+  clientSecret: '3ed22c945c20993ecdddfff539f2c8f257009eeb',
+  repo: 'blog',
+  owner: 'zacharycare',
+  admin: ['zacharycare'],
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+
+gitalk.render('gitalk-container')
+</script>
+
+    </div>
+  
+</div>
+
+
+    
+<link rel="stylesheet" href="/blog/css/fab.css">
+
+<div class="fab-frame" id="fab">
+  <a href="javascript:void(0);"><el-button type="info" icon="el-icon-more" circle></el-button></a>
+
+  <a href="/blog/categories"><el-button type="primary" icon="el-icon-collection" circle></el-button></a>
+  <a href="/blog/tags"><el-button type="success" icon="el-icon-collection-tag" circle></el-button></a>
+  <a href="/blog/archives"><el-button type="warning" icon="el-icon-takeaway-box" circle></el-button></a>
+</div>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#fab'
+  })
+</script>
+
+  </body>
+</html>

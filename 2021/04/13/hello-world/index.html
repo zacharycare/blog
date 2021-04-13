@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>truanz</title>
+  <link rel="shortcut icon" href="/blog/favicon.ico">
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+
+  <!-- element-ui -->
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/element-ui/lib/index.js"></script>
+
+  <!-- Custom CSS -->
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    
+<link rel="stylesheet" href="/blog/css/detail.css">
+
+<a id="paper-plane" href="/blog/"><i class="fa fa-paper-plane fa-lg"></i></a>
+<div class="main center-area">
+  
+  <article id="article" class="article">
+    <div class="title">
+      Hello World
+    </div>
+    <div class="content">
+      <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+    </div>
+  </article>
+  <hr>
+  
+  <hr>
+  <!-- prev next -->
+  
+  <nav id="article-nav" class="article-pn-nav">
+    
+      <a href="/blog/2021/04/13/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%B0%8F%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">Newer</strong>
+        <div class="article-nav-title">
+          
+            环境搭建小记
+          
+        </div>
+      </a>
+    
+    
+      <a href="/blog/2020/11/27/PG%E5%BA%93%E5%88%86%E8%A1%A8/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">PG库分表</div>
+      </a>
+    
+  </nav>
+  
+  <hr>
+
+  <script type="text/javascript">
+    var objs = document.getElementById("article").getElementsByTagName("img");
+    var modal = document.getElementById("modal");
+    for(var i=0;i<objs.length;i++)
+    {
+      objs[i].onclick=function()
+      {
+        window.open(this.src);
+
+        // modal.style.display = 'block';
+        // modal.innerHTML = '<img src="' + this.src + '">';
+      }
+      objs[i].style.cursor = "pointer";
+    }
+  </script>
+
+  <!-- Comments -->
+  
+    <div class="post-comments">
+        <div id="gitalk-container"></div>
+
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+<script src="/blog/js/md5.min.js"></script>
+
+<script type="text/javascript">
+ var gitalk = new Gitalk({
+  clientID: '21b4348bf8ba57233fd0',
+  clientSecret: '3ed22c945c20993ecdddfff539f2c8f257009eeb',
+  repo: 'blog',
+  owner: 'zacharycare',
+  admin: ['zacharycare'],
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+
+gitalk.render('gitalk-container')
+</script>
+
+    </div>
+  
+</div>
+
+
+    
+<link rel="stylesheet" href="/blog/css/fab.css">
+
+<div class="fab-frame" id="fab">
+  <a href="javascript:void(0);"><el-button type="info" icon="el-icon-more" circle></el-button></a>
+
+  <a href="/blog/categories"><el-button type="primary" icon="el-icon-collection" circle></el-button></a>
+  <a href="/blog/tags"><el-button type="success" icon="el-icon-collection-tag" circle></el-button></a>
+  <a href="/blog/archives"><el-button type="warning" icon="el-icon-takeaway-box" circle></el-button></a>
+</div>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#fab'
+  })
+</script>
+
+  </body>
+</html>
