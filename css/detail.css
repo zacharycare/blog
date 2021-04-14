@@ -31,3 +31,7 @@
 .main .article .content figure.highlight .code {
   padding-left: 10px;
 }
+.main .article-pn-nav {
+  display: flex;
+  justify-content: space-between;
+}
