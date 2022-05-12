@@ -110,6 +110,15 @@
 	  }
 	  var path = "/blog/" + search_path;
     searchFunc(path, 'local-search-input', 'local-search-result');
+
+    document.addEventListener('visibilitychange',function(){ //浏览器切换事件
+      if(document.visibilityState==='hidden') { //状态判断
+        //normal_title=document.title;
+        document.title = '常来看看';
+      }else {
+        document.title = 'truanz';
+      }
+    })
   </script>
 
 
